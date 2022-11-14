@@ -24,6 +24,9 @@
 		3B94DDDF29104CA800CA9A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B94DDDE29104CA800CA9A20 /* Assets.xcassets */; };
 		3B94DDE229104CA800CA9A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B94DDE029104CA800CA9A20 /* LaunchScreen.storyboard */; };
 		3B94DDEA29104F3A00CA9A20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B94DDE929104F3A00CA9A20 /* GoogleService-Info.plist */; };
+		3BACF5C32922D1C3008A196F /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF5C22922D1C3008A196F /* Snap.swift */; };
+		3BACF5C52922D851008A196F /* VerSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF5C42922D851008A196F /* VerSnapViewController.swift */; };
+		3BACF5C82922DD60008A196F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3BACF5C72922DD60008A196F /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,8 @@
 		3B94DDE129104CA800CA9A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B94DDE329104CA800CA9A20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B94DDE929104F3A00CA9A20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3BACF5C22922D1C3008A196F /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
+		3BACF5C42922D851008A196F /* VerSnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerSnapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +55,7 @@
 				3B933A372919AE780062DDA3 /* FirebaseDatabase in Frameworks */,
 				3B933A312919AE780062DDA3 /* FirebaseAnalytics in Frameworks */,
 				3B933A332919AE780062DDA3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				3BACF5C82922DD60008A196F /* SDWebImage in Frameworks */,
 				3B037FBE2910667E00856AB7 /* FirebaseAuth in Frameworks */,
 				3B933A352919AE780062DDA3 /* FirebaseAuth in Frameworks */,
 				3B933A392919AE780062DDA3 /* FirebaseStorage in Frameworks */,
@@ -66,6 +72,7 @@
 				3B933A2B291998A90062DDA3 /* SnapsViewController.swift */,
 				3B933A3A2919B6EC0062DDA3 /* ElegirUsuarioViewController.swift */,
 				3B933A2D29199F040062DDA3 /* ImagenViewController.swift */,
+				3BACF5C42922D851008A196F /* VerSnapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -74,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				3B8CCC0B291EE3EC004847B7 /* Usuario.swift */,
+				3BACF5C22922D1C3008A196F /* Snap.swift */,
 			);
 			path = Modelos;
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 				3B933A342919AE780062DDA3 /* FirebaseAuth */,
 				3B933A362919AE780062DDA3 /* FirebaseDatabase */,
 				3B933A382919AE780062DDA3 /* FirebaseStorage */,
+				3BACF5C72922DD60008A196F /* SDWebImage */,
 			);
 			productName = chullunquiaCarlosSnapchat;
 			productReference = 3B94DDD229104CA800CA9A20 /* chullunquiaCarlosSnapchat.app */;
@@ -165,6 +174,7 @@
 			packageReferences = (
 				3B037FBC2910667E00856AB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3B933A2F2919AE780062DDA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3BACF5C62922DD60008A196F /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 3B94DDD329104CA800CA9A20 /* Products */;
 			projectDirPath = "";
@@ -198,9 +208,11 @@
 				3B933A2E29199F040062DDA3 /* ImagenViewController.swift in Sources */,
 				3B8CCC0C291EE3EC004847B7 /* Usuario.swift in Sources */,
 				3B94DDDA29104CA800CA9A20 /* iniciarSesionViewController.swift in Sources */,
+				3BACF5C52922D851008A196F /* VerSnapViewController.swift in Sources */,
 				3B94DDD629104CA800CA9A20 /* AppDelegate.swift in Sources */,
 				3B94DDD829104CA800CA9A20 /* SceneDelegate.swift in Sources */,
 				3B933A3B2919B6EC0062DDA3 /* ElegirUsuarioViewController.swift in Sources */,
+				3BACF5C32922D1C3008A196F /* Snap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +446,14 @@
 				kind = branch;
 			};
 		};
+		3BACF5C62922DD60008A196F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -466,6 +486,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3B933A2F2919AE780062DDA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		3BACF5C72922DD60008A196F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BACF5C62922DD60008A196F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

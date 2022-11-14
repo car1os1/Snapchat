@@ -12,6 +12,7 @@ import FirebaseStorage
 class ImagenViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var imagePicker = UIImagePickerController()
+    var imagenID = NSUUID().uuidString
     
     @IBAction func camaraTapped(_ sender: Any) {
         imagePicker.sourceType = .savedPhotosAlbum
@@ -34,14 +35,26 @@ class ImagenViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.elegirContactoBoton.isEnabled = false
         let imagenesFolder = Storage.storage().reference().child("imagenes")
         let imagenData = imageView.image?.jpegData(compressionQuality: 0.50)
-        let cargarImagen = imagenesFolder.child("\(NSUUID().uuidString).jpg").putData(imagenData!, metadata: nil){
+        let cargarImagen = imagenesFolder.child("\(imagenID).jpg")
+            cargarImagen.putData(imagenData!, metadata: nil){
             (metadata,error) in
             if error != nil {
-                print("ocurrio un error al subir: \(error) ")
+                self.mostrarAlerta(titulo: "error", mensaje: "se produjo un error al subir la imagen. verifique su conexion a internet", accion: "aceptar")
+                self.elegirContactoBoton.isEnabled = true
+                print("ocurrio un error al subir imagen: \(error) ")
+                return
             }else{
-                self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: nil)
+                cargarImagen.downloadURL(completion: { (url, error) in
+                    guard let enlaceURL = url else  {
+                        self.mostrarAlerta(titulo: "Error", mensaje: "se producjo un error al obtener informacion de imagen", accion: "cancelar")
+                        self.elegirContactoBoton.isEnabled = true
+                        print("ocurrio un error al obtener inforacion de imagen \(error)")
+                        return
+                    }
+                    self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: url?.absoluteString)
+                })
             }
-        }
+        }/*
         let alertaCarga = UIAlertController(title: "CARGANDO imagen", message: "0%", preferredStyle: .alert)
         let progresoCarga : UIProgressView = UIProgressView(progressViewStyle: .default)
         cargarImagen.observe(.progress) {(snapshot) in
@@ -60,7 +73,7 @@ class ImagenViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         alertaCarga.addAction(btnOk)
         alertaCarga.view.addSubview(progresoCarga)
         present(alertaCarga,animated: true,completion: nil)
-
+*/
     }
     
     
@@ -86,6 +99,10 @@ class ImagenViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguienteVC = segue.destination as! ElegirUsuarioViewController
+        siguienteVC.imagenURL = sender as! String
+        siguienteVC.descrip = descripcionTextField.text!
+        siguienteVC.imagenID = imagenID
             }
     
     
